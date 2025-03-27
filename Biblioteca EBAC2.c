@@ -3,27 +3,29 @@
 #include <locale.h> //biblioteca de alocações de textos por região
 #include <string.h> //biblioteca responsável por cuidar das string
 
-int registro()
+int registro() //função responsável por cadastrar os usuários no sistema
 {
+    //Inicio da criação de variáveis/string
 	char arquivo[40];
 	char cpf[40];
 	char nome[40];
 	char sobrenome[40];
 	char cargo[40];
+	//Final da criação de variáveis/string
 	
-	printf("Digite o CPF a ser cadastgrado:  ");
-	scanf ("%s", cpf);
+	printf("Digite o CPF a ser cadastgrado:  ");//coletando informação do usuário
+	scanf ("%s", cpf);//%s refere-se a string
 	
 	strcpy(arquivo, cpf); //Respponsável por copiar os valores das string
 	
 	FILE *file; //criar o arquivo
-	file = fopen(arquivo, "w"); //criar o arquivo
+	file = fopen(arquivo, "w"); //criar o arquivo e o w significa escrever
 	fprintf(file,cpf); //salva o valor da variável
 	fclose(file); //fecha o arquivo
 	
-	file = fopen(arquivo, "a");
-	fprintf(file, ",");
-	fclose(file);
+	file = fopen(arquivo, "a");//criar o arquivo
+	fprintf(file, ",");//salva o valor da varável
+	fclose(file);//fecha o arquivo
 	
 	printf("Digite o nome a ser cadastrado:  ");
 	scanf("%s", nome);
@@ -122,6 +124,7 @@ int main()
 		printf("\t1 - Registrar nomes\n");
 		printf("\t2 - Consultar nomes\n");
 		printf("\t3 - Deletar nomes\n\n");
+		printf("\t4 - Sair de sistema\n\n");
 		printf("Opção: "); //Fim de menu
 	
 		scanf("%d", &opcao); //Armazenado a escolha do usuário
@@ -131,7 +134,7 @@ int main()
 		switch(opcao)
 		{
 			case 1:
-			registro();
+			registro();//chamada de funções
 			break;
 			
 			case 2:
@@ -141,6 +144,11 @@ int main()
 			case 3:
 			deletar();
 			break;
+			
+			case 4:
+            printf("Obrigado por utilizar o sistema!");
+            return 0;
+            break;
 			
 			default:
 			printf("Essa opção não está disponivel!\n");
